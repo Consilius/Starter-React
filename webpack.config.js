@@ -1,21 +1,58 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 module.exports = {
     mode: "development",
+    resolve: {
+        extensions: [".ts", ".tsx", ".js", ".jsx"],
+        alias: {
+            'react-dom': '@hot-loader/react-dom'
+        }
+    },
+    module: {
+        rules: [
+            {
+                test: /\.(j|t)sx?$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: "babel-loader",
+                    options: {
+                        cacheDirectory: true,
+                        babelrc: false,
+                        presets: [
+                            [
+                                "@babel/preset-env",
+                                {
+                                    targets: {
+                                        browsers: "last 2 versions"
+                                    }
+                                }
+                            ],
+                            "@babel/preset-typescript",
+                            "@babel/preset-react"
+                        ],
+                        plugins: [
+                            "react-hot-loader/babel"
+                        ]
+                    }
+                }
+            }
+        ]
+    },
     plugins: [
         new HtmlWebpackPlugin({
-            title: "Webpack demo",
-        })
+            inject: false,
+            title: 'Starter',
+            template: 'src/index.ejs'
+        }),
+        new ForkTsCheckerWebpackPlugin()
     ],
     devServer: {
         stats: "errors-only",
         overlay: true,
         historyApiFallback: true,
-        // If you use Docker, Vagrant or Cloud9, set
-        // host: "0.0.0.0";
-        //
-        // 0.0.0.0 is available to all network devices
-        // unlike default `localhost`.
+        hot: true,
+        // Use host 0.0.0.0 for Docker
         host: process.env.HOST, // Defaults to `localhost`
         port: process.env.PORT, // Defaults to 8080
     },
