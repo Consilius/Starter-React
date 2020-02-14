@@ -1,20 +1,19 @@
-import { hot } from 'react-hot-loader/root';
-import React, { FunctionComponent, useState } from 'react';
- 
+import { hot } from 'react-hot-loader/root'
+import React, { FunctionComponent, useState } from 'react'
 
 interface Props {
-    
+
 }
 
-const App: FunctionComponent = ({}: Props) => {
-    const [count, setCount] = useState(0);
-    const greeting: string = `Hello World!, ${count}`
+const App: FunctionComponent<Props> = ({}) => {
+  const [count, setCount] = useState(0)
+  const greeting = `Hello World!, ${count}`
 
-    return (
-        <>
-            {greeting}
-        </>
-    )
+  return (
+    <>
+      {greeting}
+    </>
+  )
 }
 
-export default hot(App);
+export default hot(App)

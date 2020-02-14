@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 
 module.exports = {
     mode: "development",
@@ -40,6 +41,7 @@ module.exports = {
         ]
     },
     plugins: [
+        new CaseSensitivePathsPlugin(),
         new HtmlWebpackPlugin({
             inject: false,
             title: 'Starter',
