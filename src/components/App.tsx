@@ -1,19 +1,35 @@
 import { hot } from 'react-hot-loader/root'
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent, useEffect } from 'react'
+import { withRouter, RouteComponentProps, Route } from 'react-router-dom'
+import { connect } from 'react-redux'
 
-interface Props {
+import { RootState } from '../reducers/rootReducer'
+import { rootAction } from '../actions/rootActions'
 
-}
+type Props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps & RouteComponentProps
 
-const App: FunctionComponent<Props> = ({}) => {
-  const [count, setCount] = useState(0)
-  const greeting = `Hello World!, ${count}`
+const App: FunctionComponent<Props> = ({ rootAction, root }) => {
+  useEffect(() => {
+    rootAction('something')
+  }, [root])
 
   return (
-    <>
-      {greeting}
-    </>
+    <Route path='/' exact={true}>
+      {root}
+    </Route>
   )
 }
 
-export default hot(App)
+const mapStateToProps = (
+  state: RootState
+) => ({
+  root: state.root
+})
+
+const mapDispatchToProps = {
+  rootAction
+}
+
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(hot(App))
+)
