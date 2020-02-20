@@ -6,6 +6,7 @@
     "build": "webpack --config=webpack.config.js",
     "dev": "npm run build; npm run dev:server",
     "dev:server": "webpack-dev-server --mode development",
+    "prod": "webpack --config=webpack.config.prod.js",
     "lint": "eslint --ext .jsx,.tsx,.ts,.js src/"
   },
   "keywords": [],
@@ -19,6 +20,7 @@
     "@hot-loader/react-dom": "^16.11.0",
     "@typescript-eslint/eslint-plugin": "^2.19.2",
     "@typescript-eslint/parser": "^2.19.2",
+    "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.0.6",
     "case-sensitive-paths-webpack-plugin": "^2.3.0",
     "eslint": "^6.8.0",
