@@ -1,9 +1,9 @@
 export enum RootTypeKeys {
-  ROOT_ACTION = 'ROOT_ACTION'
+  ROOT_ACTION
 }
 
 export interface RootAction {
-  type: string
+  type: number
   payload: string
 }
 

@@ -33,7 +33,8 @@ module.exports = {
               '@babel/preset-react'
             ],
             plugins: [
-              'react-hot-loader/babel'
+              'react-hot-loader/babel',
+              'transform-class-properties'
             ]
           }
         }
