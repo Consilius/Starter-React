@@ -5,7 +5,7 @@ const { CheckerPlugin } = require('awesome-typescript-loader')
 module.exports = {
   mode: 'production',
   resolve: {
-      extensions: ['.ts', '.tsx', '.js', '.jsx']
+    extensions: ['.ts', '.tsx', '.js', '.jsx']
   },
   output: {
     filename: '[name]-[contentHash].js'
@@ -28,4 +28,4 @@ module.exports = {
       template: 'src/index.ejs'
     })
   ]
-};
+}

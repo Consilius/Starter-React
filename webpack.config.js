@@ -5,10 +5,10 @@ const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
 module.exports = {
   mode: 'development',
   resolve: {
-      extensions: ['.ts', '.tsx', '.js', '.jsx'],
-      alias: {
-        'react-dom': '@hot-loader/react-dom'
-      }
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
+    alias: {
+      'react-dom': '@hot-loader/react-dom'
+    }
   },
   module: {
     rules: [
@@ -57,6 +57,6 @@ module.exports = {
     hot: true,
     // Use host 0.0.0.0 for Docker
     host: process.env.HOST, // Defaults to `localhost`
-    port: process.env.PORT, // Defaults to 8080
-  },
-};
+    port: process.env.PORT // Defaults to 8080
+  }
+}
